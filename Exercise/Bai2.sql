@@ -117,13 +117,36 @@ select students.id from bai2.students where (address like "HN")
 ) a
 );
 
-update bai2.students set sex = "0" where students.id in (
-select students.id 
-from bai2.students 
-where( students.address like "HN")
-);
+update bai2.students set sex = 0
+where address = 'HN';
+select *
+from students
+where address='HN';
 
-select * from bai2.students;
+--  Tìm học viên tuổi lớn nhất => tìm tuổi lớn nhất trong dãy còn lại sau khi bỏ max
+select *
+from students
+where age = (select max(age)
+              from students
+              where age < (select max(age)
+                           from students));
+#22.Hiển thị học viên có số tuổi lớn thứ hai
+select *
+from students
+where age = (select min(age)
+             from students
+             where age > (select min(age)
+                          from students));
+#23. Hiển thị học viên có tuổi nhỏ thứ 2 và đếm số lượng học viên có số tuổi như vậy.
+select age, count(students.id)
+from students
+where age = (select age
+             from students
+             where age = (select min(age)
+                          from students
+                          where age > (select min(age)
+                                       from students)))
+group by age;
 
 
 
