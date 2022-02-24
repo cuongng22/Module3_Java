@@ -74,6 +74,8 @@ select * from student
 select * from class where month(class.startdate) = 12;
 
 
+
+
  
  
        
