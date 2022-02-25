@@ -55,13 +55,13 @@ VALUES ('Hoa', 'Hai phong', 1, 1);
 INSERT INTO Student (StudentName, Address, Phone, Status, ClassId)
 VALUES ('Manh', 'HCM', '0123123123', 0, 2);
 
-INSERT INTO Subject
-VALUES (1, 'CF', 5, 1),
-       (2, 'C', 6, 1),
-       (3, 'HDJ', 5, 1),
-       (4, 'RDBMS', 10, 1);
+INSERT INTO Subject(subname, credit, status)
+VALUES ( 'CF', 5, 1),
+       ( 'C', 6, 1),
+       ( 'HDJ', 5, 1),
+       ( 'RDBMS', 10, 1);
        
-INSERT INTO Mark (SubId, StudentId, Mark, ExamTimes)
+INSERT INTO Mark (subid, StudentId, Mark, ExamTimes)
 VALUES (1, 1, 8, 1),
        (1, 2, 10, 2),
        (2, 1, 12, 1);
@@ -72,6 +72,7 @@ select * from student
  
 --  Hiển thị các thông tin lớp học có thời gian bắt đầu vào tháng 12.
 select * from class where month(class.startdate) = 12;
+
 
 
 
