@@ -129,6 +129,17 @@ or (D.HangXe = 'Kia' and M.DonGia = 20000);
 select * from nhacungcap order by name;
 select * from nhacungcap order by nhacungcap.mathue desc;
 
+use bai3;
+select dangkycungcap.code, nhacungcap.name, dangkycungcap.ngaybatdau, count(*) as 'số lần đăng kí' from dangkycungcap, nhacungcap
+where dangkycungcap.ncc_code = nhacungcap.code and dangkycungcap.NgayBatDau >= '2015/11/20'
+group by nhacungcap.code;
+
+select distinct HangXe
+from dongxe;
+
+select * from nhacungcap ncc 
+where not exists(select code from dangkycungcap where dangkycungcap.code = ncc.code);
+
 
 
 
