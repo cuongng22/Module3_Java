@@ -25,7 +25,6 @@ public class ServletDirection extends HttpServlet {
 
         PrintWriter writer = response.getWriter();
         writer.println("<html>");
-
         String result = dictionary.get(search);
         if(result != null){
             writer.println("Word: " + search);
