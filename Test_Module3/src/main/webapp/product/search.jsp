@@ -10,11 +10,6 @@
 <div class="container">
     <h1>Danh sách sản phẩm</h1>
     <a class="btn btn-primary float-end" href="/products?action=create">Tạo mới sản phẩm</a>
-    <form class="form-inline my-2 my-lg-0 d-flex" action="/search" method="get">
-        <input class="form-control mr-sm-2 input-search" type="search" placeholder="Tìm gì đó ..."
-               aria-label="Search" name="q">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
-    </form>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -29,7 +24,7 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="product" items="${products}" varStatus="loop">
+        <c:forEach var="product" items="${search}" varStatus="loop">
             <tr>
                 <td>${loop.count}</td>
                 <td><a href="/products?action=view&id=${product.id}">${product.name}</a></td>

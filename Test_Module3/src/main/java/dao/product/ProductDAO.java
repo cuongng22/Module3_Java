@@ -97,4 +97,28 @@ public class ProductDAO implements IProductDAO{
         }
         return false;
     }
+
+    public List<Product> findByName(String name) {
+        List<Product> products = new ArrayList<>();
+        Product product;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from product where name like %name%");
+            preparedStatement.setString(1, name);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int p_id = rs.getInt("id");
+                String p_name = rs.getString("name");
+                double price = rs.getDouble("price");
+                int quantity = rs.getInt("quantity");
+                String color = rs.getString("color");
+                String description = rs.getString("description");
+                int category_id = rs.getInt("category_id");
+                product = new Product(p_id, p_name,price, quantity, color, description, category_id );
+                products.add(product);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return products;
+    }
 }

@@ -1,5 +1,7 @@
 package service;
 
+import model.Product;
+
 import java.util.List;
 
 public interface IGeneralService<T> {
@@ -10,5 +12,9 @@ public interface IGeneralService<T> {
     boolean create(T t);
 
     boolean updateById(int id, T t );
+
+   List<Product> findByname(String name);
+
+
 
 }

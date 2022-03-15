@@ -27,4 +27,9 @@ public class ProductService implements IProductService{
     public boolean updateById(int id, Product product) {
         return productDAO.updateById(id, product);
     }
+
+    @Override
+    public List<Product> findByname(String name) {
+        return productDAO.findByName(name);
+    }
 }

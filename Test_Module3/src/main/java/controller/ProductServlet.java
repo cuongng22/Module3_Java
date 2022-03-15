@@ -29,6 +29,14 @@ public class ProductServlet extends HttpServlet {
                 showEditForm(request, response);
                 break;
             }
+            case "search" : {
+                String name = request.getParameter("name");
+                List<Product> products =  productService.findByname(name);
+                request.setAttribute("search", products);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/product/search.jsp");
+                dispatcher.forward(request, response);
+                break;
+            }
             default:{
                 showList(request, response);
                 break;
@@ -71,6 +79,10 @@ public class ProductServlet extends HttpServlet {
             case "edit" :{
                 editProduct(request);
                 break;
+            }
+            case "search" : {
+                String search = request.getParameter("q");
+
             }
         }
     }
