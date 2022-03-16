@@ -10,7 +10,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ProductServlet", value = "/products")
+@WebServlet(value = "/products")
 public class ProductServlet extends HttpServlet {
     private IProductService productService = new ProductService();
     @Override
